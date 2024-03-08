@@ -9,7 +9,7 @@ function Currencies() {
       return (
         <div className="currency" key={item.currency}>
           <p>
-            <Link to={"/currency/" + item.currency}>{item.currency}</Link>:{" "}
+            <Link to={"/currencies/" + item.currency}>{item.currency}</Link>:{" "}
             {item.country}
           </p>
         </div>

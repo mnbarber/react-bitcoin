@@ -4,6 +4,7 @@ import Currencies from "./Currencies/Currencies";
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import Price from "./Price/Price";
 
 function App() {
   const [price, setPrice] = useState(null);
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/currencies" element={<Currencies />} />
+          <Route path="/currencies/:currencyName" element={<Price />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
