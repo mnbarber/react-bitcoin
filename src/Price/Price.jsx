@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function Price({}) {
+export default function Price({setCurrencyAbbr}) {
   const [price, setPrice] = useState("");
   const { currencyName } = useParams(); // currencyAbbr comes from the Route
   console.log(currencyName);
 
   useEffect(() => {
+    setCurrencyAbbr(currencyName)
     const coinDeskUrl = `https://api.coindesk.com/v1/bpi/currentprice/${currencyName}`;
 
     async function getPrice() {
       try {
         const response = await fetch(coinDeskUrl);
         const data = await response.json();
-
         console.log(data);
         setPrice(data.bpi[currencyName].rate);
       } catch (err) {
@@ -22,6 +22,7 @@ export default function Price({}) {
     }
 
     getPrice();
+    
   }, [currencyName]);
 
   console.log(price, " <- price");
